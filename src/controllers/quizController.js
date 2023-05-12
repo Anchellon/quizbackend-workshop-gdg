@@ -65,29 +65,8 @@ exports.quizCreate = (req, res) => {
   res.status(200).send(qz);
 };
 
-// Add specific question to a quiz
-// or delete a qn from a quiz
-// Expected payload
-// {
-//     "name": "Postman Quiz",
-//     "questions": [
-//         {
-//             "qnText": "Who created Postman?",
-//             "correctAnswer": 2,
-//             "options": [
-//                 "myself",
-//                 "me",
-//                 "I"
-//             ]
-//         },
-//         {
-//             "qnText": "Why should you use postman?",
-//             "correctAnswer": 0,
-//             "options": [
-//                 "duh",
-//                 "obv",
-//                 "ez"
-//             ]
-//         }
-//     ]
-// }
+exports.quiz_updateName = (res, req) => {
+  Quiz.findByIdAndUpdate(req.params.id, { name: req.body.name }).then((qz) => {
+    res.status(200).send(qz);
+  });
+};
